@@ -32,6 +32,10 @@ module WalletPayment
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     
+    # Use API mode
+    config.api_only = true
+
+    # remove default routes for active storage
     config.active_storage.draw_routes = false
   end
 end
