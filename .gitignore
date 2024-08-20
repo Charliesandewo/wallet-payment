@@ -37,3 +37,9 @@ yarn-debug.log*
 
 # ignore all schema changes
 /db/schema.rb
+
+# ignore rubocop since it's only for development environment
+.rubocop.yml
+
+# ignore vscode settings it's only for development enviroment
+.vscode/settings.json
