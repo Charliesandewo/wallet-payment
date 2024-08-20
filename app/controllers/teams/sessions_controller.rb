@@ -1,7 +1,8 @@
 module Teams
-  # session management for ::User login
+  # session management for ::Team login
   class SessionsController < ApplicationController
-    # create new session for ::User login
+    # create new session for ::Team login
+    # POST /teams/sessions/sign_in
     def create
       params = create_params
       team = Teams::Sessions::CreateManager.execute(params:)
@@ -18,6 +19,7 @@ module Teams
       end
     end
 
+    # DELETE /teams/sessions/
     def destroy
       session[:team_id] = nil
       render json: { message: "Logged out" }

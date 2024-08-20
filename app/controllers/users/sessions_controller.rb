@@ -2,6 +2,7 @@ module Users
   # session management for ::User login
   class SessionsController < ApplicationController
     # create new session for ::User login
+    # POST /users/sessions/sign_in
     def create
       params = create_params
       user = Users::Sessions::CreateManager.execute(params:)
@@ -18,6 +19,7 @@ module Users
       end
     end
 
+    # DELETE /users/sessions/
     def destroy
       session[:user_id] = nil
       render json: { message: "Logged out" }

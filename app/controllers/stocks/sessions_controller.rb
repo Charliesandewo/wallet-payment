@@ -1,7 +1,8 @@
 module Stocks
-  # session management for ::User login
+  # session management for ::Stock login
   class SessionsController < ApplicationController
-    # create new session for ::User login
+    # create new session for ::Stock login
+    # POST /stocks/sessions/sign_in
     def create
       params = create_params
       stock = Stocks::Sessions::CreateManager.execute(params:)
@@ -18,6 +19,7 @@ module Stocks
       end
     end
 
+    # DELETE /users/sessions/
     def destroy
       session[:stock_id] = nil
       render json: { message: "Logged out" }
