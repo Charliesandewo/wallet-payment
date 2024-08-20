@@ -1,5 +1,6 @@
 module Users
   module Sessions
+    # creating new session if sign in successful
     class CreateManager
       def self.execute(params:)
         user = User.find_by(username: params[:username])
