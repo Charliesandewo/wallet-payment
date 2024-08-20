@@ -1,25 +1,25 @@
-module Users
+module Teams
   # session management for ::User login
   class SessionsController < ApplicationController
     # create new session for ::User login
     def create
       params = create_params
-      user = Users::Sessions::CreateManager.execute(params:)
+      team = Teams::Sessions::CreateManager.execute(params:)
 
-      if user.blank?
+      if team.blank?
         render json: { error: "invalid username or password" }, status: :unauthorized
       else
-        session[:user_id] = user.id
+        session[:user_id] = team.id
         render(
-          json:       user,
-          serializer: Users::BasicSerializer,
+          json:       team,
+          serializer: Teams::BasicSerializer,
           status:     :ok
         )
       end
     end
 
     def destroy
-      session[:user_id] = nil
+      session[:team_id] = nil
       render json: { message: "Logged out" }
     end
 

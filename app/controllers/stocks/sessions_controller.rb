@@ -1,25 +1,25 @@
-module Users
+module Stocks
   # session management for ::User login
   class SessionsController < ApplicationController
     # create new session for ::User login
     def create
       params = create_params
-      user = Users::Sessions::CreateManager.execute(params:)
+      stock = Stocks::Sessions::CreateManager.execute(params:)
 
-      if user.blank?
+      if stocks.blank?
         render json: { error: "invalid username or password" }, status: :unauthorized
       else
-        session[:user_id] = user.id
+        session[:user_id] = stock.id
         render(
-          json:       user,
-          serializer: Users::BasicSerializer,
+          json:       stock,
+          serializer: Stocks::BasicSerializer,
           status:     :ok
         )
       end
     end
 
     def destroy
-      session[:user_id] = nil
+      session[:stock_id] = nil
       render json: { message: "Logged out" }
     end
 
