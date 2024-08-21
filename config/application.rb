@@ -40,5 +40,8 @@ module WalletPayment
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore, key: '_wallet_payment_session'
+
+    # include custom gem
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
