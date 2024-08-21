@@ -1,6 +1,6 @@
 Team.create(
-  name:              "Sandewo",
-  username:          "sandewo",
+  name:              "Charlie Sandewo",
+  username:          "charliesandewo",
   password:          "password123",
   wallet_attributes: {}
 )

@@ -1,6 +1,6 @@
-User.create(
-  name:              "Charlie",
-  username:          "charlie",
+Stock.create(
+  name:              "Charlie Sandewo",
+  username:          "charliesandewo",
   password:          "password123",
   wallet_attributes: {}
 )
