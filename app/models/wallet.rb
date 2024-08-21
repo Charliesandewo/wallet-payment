@@ -1,10 +1,10 @@
 class Wallet < ApplicationRecord
-  belongs_to :entity
+  belongs_to :entity, polymorphic: true
 
   after_save :update_amount
 
   def update_amount
-    update(:amount, calculate_amount)
+    update_column(:amount, calculate_amount)
   end
 
   def calculate_amount
