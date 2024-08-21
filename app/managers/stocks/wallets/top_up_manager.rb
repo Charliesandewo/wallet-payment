@@ -16,6 +16,8 @@ module Stocks
         Wallet.transaction do
           top_up_transaction.save!
         end
+
+        wallet
       end
     end
   end

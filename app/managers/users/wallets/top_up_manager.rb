@@ -5,7 +5,7 @@ module Users
       def self.execute(params:, current_user:)
         wallet = Wallet.find_by(entity: current_user)
 
-        validator = Wallets::TopUpValidator.new(params:, wallet:)
+        validator = ::Wallets::TopUpValidator.new(params:, wallet:)
         raise StandardError.new(validator.errors.messages) if validator.invalid?
 
         top_up_transaction = Transactions::TopUpService.execute(
@@ -16,6 +16,8 @@ module Users
         Wallet.transaction do
           top_up_transaction.save!
         end
+
+        wallet
       end
     end
   end
