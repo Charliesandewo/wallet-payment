@@ -4,7 +4,7 @@ module Teams
 
     # POST /teams/top_up
     def top_up
-      params = update_params
+      params = top_up_params
       wallet = Teams::Wallets::TopUpManager.execute(params:, current_team:)
 
       render(
@@ -16,8 +16,20 @@ module Teams
 
     # POST /teams/withdraw
     def withdraw
-      params = update_params
+      params = withdraw_params
       wallet = Teams::Wallets::WithdrawManager.execute(params:, current_team:)
+
+      render(
+        json:       wallet,
+        serializer: ::WalletSerializer,
+        status:     :ok
+      )
+    end
+
+    # POST /teams/transfer
+    def transfer
+      params = transfer_params
+      wallet = Teams::Wallets::TransferManager.execute(params:, current_team:)
 
       render(
         json:       wallet,
@@ -28,8 +40,21 @@ module Teams
 
     private
 
-    def update_params
+    def top_up_params
       params.permit(
+        :amount
+      )
+    end
+
+    def withdraw_params
+      params.permit(
+        :amount
+      )
+    end
+
+    def transfer_params
+      params.permit(
+        :target_wallet_id,
         :amount
       )
     end
