@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 3.3.3
+Rails 6.1.7.8
+psql 14.13
 
-Things you may want to cover:
+### Initializing the database
+```ruby
+rails db:seed
+```
 
-* Ruby version
+the command will create the database and populate each entity (::User, ::Stock, ::Team) with 1 account with this crendetial
+```
+username: charliesandewo
+password: password123
+```
 
-* System dependencies
+Top level design spec is available in https://drive.google.com/file/d/1A9p-u_LwoUDSazw1BWqhQzktqPgDwJ7v/view?usp=sharing
 
-* Configuration
+The postman requests collections are available in https://drive.google.com/drive/folders/1FalcqKPwifi025qqZecDY_vMN2FrMIIs?usp=drive_link
 
-* Database creation
+### Running the app
+execute
+```
+rails server
+```
 
-* Database initialization
+the app will be served in port 3000 and accessible via localhost:3000,
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+requests from the postman imports can be executed
