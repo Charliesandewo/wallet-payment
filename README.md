@@ -9,7 +9,7 @@ psql 14.13
 rails db:seed
 ```
 
-the command will create the database and populate each entity (::User, ::Stock, ::Team) with 1 account with this crendetial
+the command will create the database and populate each entity (::User, ::Stock, ::Team) with 1 account with this credential
 ```
 username: charliesandewo
 password: password123
