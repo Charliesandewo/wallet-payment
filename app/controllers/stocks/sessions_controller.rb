@@ -7,10 +7,12 @@ module Stocks
       params = create_params
       stock = Stocks::Sessions::CreateManager.execute(params:)
 
-      if stocks.blank?
+      if stock.blank?
         render json: { error: "invalid username or password" }, status: :unauthorized
       else
-        session[:user_id] = stock.id
+        ClearSessionService.execute(session:)
+        session[:stock_id] = stock.id
+
         render(
           json:       stock,
           serializer: Stocks::BasicSerializer,

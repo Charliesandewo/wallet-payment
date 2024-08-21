@@ -1,7 +1,5 @@
 # User domain routes
 namespace :teams do 
-  namespace :sessions do
-    post 'sign_in', action: 'create'
-    delete '/', action: 'destroy'
-  end
+  draw('/teams/sessions_routes')
+  draw ('teams/wallets_routes')
 end

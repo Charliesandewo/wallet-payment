@@ -10,7 +10,9 @@ module Users
       if user.blank?
         render json: { error: "invalid username or password" }, status: :unauthorized
       else
+        ClearSessionService.execute(session:)
         session[:user_id] = user.id
+
         render(
           json:       user,
           serializer: Users::BasicSerializer,

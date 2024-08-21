@@ -33,18 +33,27 @@ class ApplicationController < ActionController::Base
   def user_require_login
     return if user_logged_in?
 
-    flash[:alert] = "You must be logged in to access this section."
+    raise StandardError.new(
+      message: "You must be logged in to access this section.",
+      status:  401
+    )
   end
 
   def team_require_login
     return if team_logged_in?
 
-    flash[:alert] = "You must be logged in to access this section."
+    raise StandardError.new(
+      message: "You must be logged in to access this section.",
+      status:  401
+    )
   end
 
   def stock_require_login
     return if stock_logged_in?
 
-    flash[:alert] = "You must be logged in to access this section."
+    raise StandardError.new(
+      message: "You must be logged in to access this section.",
+      status:  401
+    )
   end
 end

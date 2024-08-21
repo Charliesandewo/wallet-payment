@@ -1,7 +1,5 @@
 # User domain routes
 namespace :stocks do 
-  namespace :sessions do
-    post 'sign_in', action: 'create'
-    delete '/', action: 'destroy'
-  end
+  draw('/stocks/sessions_routes')
+  draw ('stocks/wallets_routes')
 end
