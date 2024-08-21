@@ -10,7 +10,9 @@ module Teams
       if team.blank?
         render json: { error: "invalid username or password" }, status: :unauthorized
       else
-        session[:user_id] = team.id
+        ClearSessionService.execute(session:)
+        session[:team_id] = team.id
+
         render(
           json:       team,
           serializer: Teams::BasicSerializer,
