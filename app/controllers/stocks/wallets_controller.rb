@@ -7,7 +7,23 @@ module Stocks
       params = update_params
       wallet = Stocks::Wallets::TopUpManager.execute(params:, current_stock:)
 
-      render json: { message: "top up successful" }, status: :ok
+      render(
+        json:       wallet,
+        serializer: ::WalletSerializer,
+        status:     :ok
+      )
+    end
+
+    # POST /stocks/withdraw
+    def withdraw
+      params = update_params
+      wallet = Stocks::Wallets::WithdrawManager.execute(params:, current_stock:)
+
+      render(
+        json:       wallet,
+        serializer: ::WalletSerializer,
+        status:     :ok
+      )
     end
 
     private
