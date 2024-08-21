@@ -37,5 +37,8 @@ module WalletPayment
 
     # remove default routes for active storage
     config.active_storage.draw_routes = false
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_wallet_payment_session'
   end
 end
